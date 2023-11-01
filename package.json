@@ -1,0 +1,36 @@
+{
+  "dependencies": {
+    "@types/multer": "^1.4.9",
+    "@types/node": "^20.8.10",
+    "axios": "^1.6.0",
+    "b64-to-blob": "^1.2.19",
+    "canvas": "^2.11.2",
+    "cors": "^2.8.5",
+    "domexception": "^4.0.0",
+    "express": "^4.18.2",
+    "form-data": "^4.0.0",
+    "formdata-node": "^6.0.3",
+    "gif-encoder-2": "^1.0.5",
+    "gm": "^1.25.0",
+    "multer": "^1.4.5-lts.1",
+    "node-domexception": "^2.0.1",
+    "nodemon": "^3.0.1",
+    "stream-to-blob": "^2.0.1",
+    "ts-node": "^10.9.1",
+    "web-streams-polyfill": "^3.2.1"
+  },
+  "name": "test-gif-maker",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "ts-node app.ts --env-file .env",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/cors": "^2.8.15"
+  }
+}
