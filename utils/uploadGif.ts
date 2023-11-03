@@ -31,20 +31,31 @@ export default async function uploadGif(name?: string) {
         const files = await readdirAsync(imagesFolder);
         const image = new Image();
         image.src = path.join(imagesFolder, files[0]);
-        console.log('image', image)
-        console.log('files', files)
-        console.log('fileee', files[0])
+        // console.log('image', image)
+        // console.log('files', files)
+        // console.log('fileee', files[0])
+        // console.log('image path', path.join(imagesFolder, files[0]))
+        // console.log('file 0 from path', await fileFromPath(path.join(imagesFolder, files[0])))
         console.log('image path', path.join(imagesFolder, files[0]))
-        console.log('file 0 from path', await fileFromPath(path.join(imagesFolder, files[0])))
-        console.log('fasffsa', path.join(imagesFolder, files[0]))
 
         const firstImageData = fs.readFileSync(path.join('./images/', files[0]))
-        const firstImageFile = new File([firstImageData], "my-picture", { lastModified: Number(new Date()) })
+        const firstImageFile = new File([firstImageData], "my-image", { lastModified: Number(new Date()) })
+        console.log('first image data', firstImageData)
         console.log('frist image file', firstImageFile)
-
         // Setting the first image file to the form
         if (firstImageFile) {
             form.set("image", firstImageFile)
+        }
+
+        const allImageData = files?.map((file) => fs.readFileSync(path.join('./images/', file)))
+        console.log('all image data', allImageData)
+        const allImageFiles = allImageData?.map((imageData) => new File([imageData], "my-images", { lastModified: Number(new Date()) }))
+        console.log('all image files', allImageFiles)
+        // Setting the images to the form
+        if (allImageFiles) {
+            allImageFiles.forEach((imageFile) =>
+                form.append("images", imageFile)
+            )
         }
 
         // Set the name of the user to the form
