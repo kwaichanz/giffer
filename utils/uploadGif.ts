@@ -47,16 +47,16 @@ export default async function uploadGif(name?: string) {
             form.set("image", firstImageFile)
         }
 
-        const allImageData = files?.map((file) => fs.readFileSync(path.join('./images/', file)))
-        console.log('all image data', allImageData)
-        const allImageFiles = allImageData?.map((imageData) => new File([imageData], "my-images", { lastModified: Number(new Date()) }))
-        console.log('all image files', allImageFiles)
-        // Setting the images to the form
-        if (allImageFiles) {
-            allImageFiles.forEach((imageFile) =>
-                form.append("images", imageFile)
-            )
-        }
+        // const allImageData = files?.map((file) => fs.readFileSync(path.join('./images/', file)))
+        // console.log('all image data', allImageData)
+        // const allImageFiles = allImageData?.map((imageData) => new File([imageData], "my-images", { lastModified: Number(new Date()) }))
+        // console.log('all image files', allImageFiles)
+        // // Setting the images to the form
+        // if (allImageFiles) {
+        //     allImageFiles.forEach((imageFile) =>
+        //         form.append("images", imageFile)
+        //     )
+        // }
 
         // Set the name of the user to the form
         console.info('formmmmmmmmm', form)
@@ -72,6 +72,6 @@ export default async function uploadGif(name?: string) {
         return res
 
     } catch (err) {
-        console.log('uploading gif error:', err)
+        console.error('uploading gif error:', err)
     }
 }

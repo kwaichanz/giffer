@@ -12,6 +12,8 @@ export const makeGif = async (req: Request, res: Response, next: NextFunction) =
             console.log('req body', req.body)
             // res.send("Multiple files uploaded successsfully");
             console.log("upload success!?");
+            console.log('req.files', req.files)
+
         } else {
             res.status(400).send("Please upload a valid images");
             console.log("upload failed!?");

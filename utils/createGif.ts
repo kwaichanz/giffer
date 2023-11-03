@@ -5,6 +5,7 @@ import GIFEncoder from 'gif-encoder-2'
 import { createCanvas, Image } from "canvas";
 import fs from 'fs'
 import { imagesFolder } from "../data/data-sources";
+import sharp from 'sharp'
 
 const readdirAsync = promisify(readdir);
 
@@ -54,6 +55,7 @@ export default async function createGif(algorithm: "neuquant" | "octree") {
 
             const canvas = createCanvas(width, height);
             const ctx = canvas.getContext("2d");
+            // ctx.quality = 'best'
 
             console.log('drawing images')
             // draw an image for each file and add frame to encoder
@@ -61,7 +63,14 @@ export default async function createGif(algorithm: "neuquant" | "octree") {
             try {
 
                 for (const file of files) {
-                    await new Promise<void>((resolve3) => {
+                    await new Promise<void>(async (resolve3) => {
+                        // sharp.cache(false);
+                        // let buffer = await sharp(path.join(imagesFolder, file))
+                        //     .resize(720, 1280, {
+                        //     })
+                        //     .toBuffer();
+                        // sharp(buffer).toFile(path.join(imagesFolder, 'a', file))
+
                         const image = new Image();
                         image.onload = () => {
                             ctx.drawImage(image, 0, 0);
@@ -69,6 +78,7 @@ export default async function createGif(algorithm: "neuquant" | "octree") {
                             resolve3();
                         };
                         image.src = path.join(imagesFolder, file);
+
                     }).then(() => {
                         console.log(' encoding..')
                     });
