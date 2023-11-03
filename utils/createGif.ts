@@ -78,7 +78,7 @@ export default async function createGif(algorithm: "neuquant" | "octree") {
             } finally {
                 console.log('creating gif successfull!')
                 encoder.finish()
-                deleteUsedFiles()
+                // deleteUsedFiles()
                 return
             }
 
@@ -88,21 +88,3 @@ export default async function createGif(algorithm: "neuquant" | "octree") {
     });
 }
 
-
-async function deleteUsedFiles() {
-    console.log('deleting files')
-    try {
-
-        fs.readdir(imagesFolder, (err, files: string[]) => {
-            if (err) throw err;
-
-            for (const file of files) {
-                fs.unlink(path.join(imagesFolder, file), (err) => {
-                    if (err) throw err
-                })
-            }
-        })
-    } catch (err) {
-        console.log('deleting files error:', err)
-    }
-}

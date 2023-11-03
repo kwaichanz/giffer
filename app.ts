@@ -4,11 +4,8 @@ const readable = new ReadableStream();
 
 global.DOMException || import('node-domexception')
 
-import { Blob } from "buffer";
 import cors from 'cors';
 import express, { NextFunction, Request, Response } from 'express';
-import { imagesRoutes } from "./routes/images.route";
-import { defaultRoute } from "./routes/default.route";
 import { routes } from "./routes";
 
 interface CustomError extends Error {

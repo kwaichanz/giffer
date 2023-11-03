@@ -17,6 +17,7 @@ const upload = multer({
     storage: storageEngine,
     limits: { fileSize: 30000000 },
     fileFilter: (req: Request, file: Express.Multer.File, cb: FileFilterCallback) => {
+        console.log('multer file :', file)
         checkFileType(file, cb);
     },
 });
